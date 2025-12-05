@@ -22,7 +22,6 @@ interface PetShopContextType {
 
 const PetShopContext = createContext<PetShopContextType | undefined>(undefined);
 
-// Sample data
 const sampleCustomers: Customer[] = [
   {
     id: '1',
@@ -155,7 +154,6 @@ export function PetShopProvider({ children }: { children: ReactNode }) {
 
   const deleteCustomer = (id: string) => {
     setCustomers((prev) => prev.filter((c) => c.id !== id));
-    // Also delete associated pets and appointments
     setPets((prev) => prev.filter((p) => p.customerId !== id));
     setAppointments((prev) => prev.filter((a) => a.customerId !== id));
   };
@@ -177,7 +175,6 @@ export function PetShopProvider({ children }: { children: ReactNode }) {
 
   const deletePet = (id: string) => {
     setPets((prev) => prev.filter((p) => p.id !== id));
-    // Also delete associated appointments
     setAppointments((prev) => prev.filter((a) => a.petId !== id));
   };
 
